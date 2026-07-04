@@ -178,6 +178,11 @@ export const translations = {
       userCentric: 'User-Centric Design',
       userNeeds: 'Meeting User Needs',
       otherProjects: 'Other Projects',
+      client: 'Project Context',
+      tools: 'Tools & Technologies',
+      category: 'Category',
+      year: 'Year',
+      gallery: 'Gallery',
     }
   },
   fr: {
@@ -356,6 +361,11 @@ export const translations = {
       userCentric: 'Design Centré Utilisateur',
       userNeeds: 'Répondre aux Besoins des Utilisateurs',
       otherProjects: 'Autres Projets',
+      client: 'Contexte du Projet',
+      tools: 'Outils & Technologies',
+      category: 'Catégorie',
+      year: 'Année',
+      gallery: 'Galerie',
     }
   }
 };

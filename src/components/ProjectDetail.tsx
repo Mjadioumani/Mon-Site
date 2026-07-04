@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Wrench } from 'lucide-react';
 import { getProject, getOtherProjects } from '@/lib/projects';
 import { useLanguage } from '@/components/LanguageContext';
 import { Reveal, RevealGroup, RevealItem } from '@/components/motion/Reveal';
@@ -11,10 +12,13 @@ import { Footer } from '@/components/Footer';
 export function ProjectDetail({ id }: { id: string }) {
   const { t, language } = useLanguage();
   const project = getProject(id);
+  const [activeImage, setActiveImage] = useState(0);
+
   if (!project) return null;
 
   const content = project.content[language];
   const otherProjects = getOtherProjects(id, 2);
+  const gallery = project.images;
 
   return (
     <section className="py-12 md:py-16">
@@ -39,29 +43,76 @@ export function ProjectDetail({ id }: { id: string }) {
         </div>
       </Reveal>
 
-      {/* Title and Metadata */}
+      {/* Title */}
       <Reveal variant="up">
         <div className="mb-10">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-8">{content.title}</h1>
-          <div className="flex flex-wrap items-center gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              {content.category}
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-border" />
-              {project.year}
-            </div>
-          </div>
         </div>
       </Reveal>
 
-      {/* Hero Image */}
+      {/* Meta info panel */}
+      <Reveal variant="up">
+        <dl className="grid grid-cols-2 sm:grid-cols-3 gap-8 mb-12 pb-10 border-b border-border/10">
+          <div>
+            <dt className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">{t.projectDetail.category}</dt>
+            <dd className="text-[13px] font-bold text-white">{content.category}</dd>
+          </div>
+          <div>
+            <dt className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">{t.projectDetail.year}</dt>
+            <dd className="text-[13px] font-bold text-white">{project.year}</dd>
+          </div>
+          <div className="col-span-2 sm:col-span-1">
+            <dt className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">{t.projectDetail.client}</dt>
+            <dd className="text-[13px] font-bold text-white">{content.client || '—'}</dd>
+          </div>
+        </dl>
+      </Reveal>
+
+      {/* Gallery */}
       <Reveal variant="zoom">
-        <div className="relative aspect-video rounded-2xl overflow-hidden mb-20 bg-muted border border-border/10">
-          <Image src={project.image} alt={content.title} fill sizes="100vw" className="object-cover" priority />
+        <div className="relative aspect-video rounded-2xl overflow-hidden mb-4 bg-muted border border-border/10">
+          <Image src={gallery[activeImage]} alt={content.title} fill sizes="100vw" className="object-cover" priority />
         </div>
       </Reveal>
+      {gallery.length > 1 && (
+        <div className="flex gap-3 mb-20 overflow-x-auto pb-2">
+          {gallery.map((src, idx) => (
+            <button
+              key={src}
+              type="button"
+              onClick={() => setActiveImage(idx)}
+              data-cursor-hover
+              aria-label={`${t.projectDetail.gallery} ${idx + 1}`}
+              className={`relative w-24 h-16 shrink-0 rounded-lg overflow-hidden border transition-colors ${
+                activeImage === idx ? 'border-primary' : 'border-border/20 opacity-60 hover:opacity-100'
+              }`}
+            >
+              <Image src={src} alt="" fill sizes="96px" className="object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
+      {gallery.length <= 1 && <div className="mb-16" />}
+
+      {/* Tools & Technologies */}
+      {project.tools.length > 0 && (
+        <Reveal variant="up" className="mb-16">
+          <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
+            <Wrench className="w-4 h-4 text-primary" />
+            {t.projectDetail.tools}
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {project.tools.map((tool) => (
+              <span
+                key={tool}
+                className="text-[11px] font-medium text-muted-foreground border border-border/20 bg-card rounded-full px-4 py-2"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+      )}
 
       {/* Content Sections */}
       <RevealGroup className="space-y-16 max-w-3xl" stagger={0.08}>
@@ -80,19 +131,8 @@ export function ProjectDetail({ id }: { id: string }) {
         ))}
       </RevealGroup>
 
-      {/* Tags */}
-      {project.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-16">
-          {project.tags.map((tag) => (
-            <span key={tag} className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground border border-border/20 rounded-full px-3 py-1.5">
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
       {/* Bottom Navigation */}
-      <div className="flex items-center justify-between py-20 border-b border-border/10 mb-20 mt-4">
+      <div className="flex items-center justify-between py-20 border-b border-border/10 mb-20 mt-16">
         <Link href="/projects" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-white transition-colors" data-cursor-hover>
           <ArrowLeft className="w-3 h-3" />
           {t.common.backProjects}
@@ -111,7 +151,7 @@ export function ProjectDetail({ id }: { id: string }) {
                   <Link href={`/projects/${p.id}`} className="group block" data-cursor-hover>
                     <div className="relative aspect-[16/12] rounded-xl overflow-hidden mb-5 bg-muted border border-border/10">
                       <Image
-                        src={p.image}
+                        src={p.images[0]}
                         alt={pContent.title}
                         fill
                         sizes="(min-width: 768px) 50vw, 100vw"

@@ -2,6 +2,7 @@ export type ProjectContent = {
   title: string;
   category: string;
   shortDesc: string;
+  client: string;
   approach: string;
   vision: string;
   challenges: string;
@@ -13,10 +14,11 @@ export type ProjectContent = {
 export type Project = {
   id: string;
   year: string;
-  image: string;
+  /** First entry is the cover image shown in listings; the rest form the detail-page gallery. */
+  images: string[];
   liveUrl?: string;
   repoUrl?: string;
-  tags: string[];
+  tools: string[];
   content: {
     en: ProjectContent;
     fr: ProjectContent;
@@ -26,19 +28,28 @@ export type Project = {
 /**
  * Single source of truth for project data, consumed by the home teaser
  * (Projects.tsx), the full gallery (ProjectsGrid.tsx) and the detail page
- * (ProjectDetail.tsx). Add new projects here as they become available.
+ * (ProjectDetail.tsx). Add new projects here as they become available —
+ * `images` accepts any number of screenshots.
  */
 export const PROJECTS: Project[] = [
   {
     id: 'project-1',
     year: '2024',
-    image: '/projet1.jpg',
-    tags: ['Cisco Packet Tracer', 'Networking', 'Security', 'IT Support'],
+    images: ['/projet1.jpg'],
+    tools: [
+      'Cisco Packet Tracer',
+      'VLAN Configuration',
+      'IP Addressing & Subnetting',
+      'Routing & Switching',
+      'Network Security Basics',
+      'Troubleshooting & Diagnostics',
+    ],
     content: {
       en: {
         title: 'Network Infrastructure & Security Setup',
         category: 'Network Engineering',
         shortDesc: 'Designing and securing a reliable local network infrastructure that mirrors a real enterprise environment.',
+        client: 'Academic project — Institut CERCO, Network Engineering training',
         approach: 'In this project, I followed a structured approach to design and implement a reliable local network infrastructure. My focus was on building a stable, secure, and efficient system that reflects real-world networking environments.',
         vision: 'My goal was to develop a practical understanding of how modern networks operate, including communication between devices, network organization, and basic security practices. I aimed to simulate a real enterprise network environment.',
         challenges: 'One of the main challenges was managing IP addressing and ensuring proper communication between multiple devices without conflicts. Additionally, implementing basic network security and maintaining a clear network structure required careful planning.',
@@ -50,6 +61,7 @@ export const PROJECTS: Project[] = [
         title: 'Infrastructure Réseau & Sécurité',
         category: 'Ingénierie Réseau',
         shortDesc: 'Conception et sécurisation d’une infrastructure réseau locale fiable, à l’image d’un environnement d’entreprise réel.',
+        client: 'Projet académique — Institut CERCO, formation en ingénierie réseau',
         approach: 'Pour ce projet, j’ai suivi une démarche structurée pour concevoir et mettre en place une infrastructure réseau locale fiable. J’ai cherché à construire un système stable, sécurisé et efficace, représentatif d’un environnement réseau réel.',
         vision: 'Mon objectif était de développer une compréhension pratique du fonctionnement des réseaux modernes : communication entre les appareils, organisation du réseau et bonnes pratiques de sécurité de base, en simulant un environnement réseau d’entreprise.',
         challenges: 'L’un des principaux défis a été la gestion de l’adressage IP et le maintien d’une communication correcte entre plusieurs appareils sans conflits. La mise en place d’une sécurité réseau de base et d’une structure claire a demandé une planification rigoureuse.',

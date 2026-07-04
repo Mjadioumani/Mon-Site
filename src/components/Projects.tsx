@@ -33,7 +33,7 @@ export function Projects() {
               <Link href={`/projects/${project.id}`} className="group cursor-pointer block" data-cursor-hover>
                 <div className="relative aspect-[16/12] rounded-xl overflow-hidden mb-5 bg-muted border border-border/10">
                   <Image
-                    src={project.image}
+                    src={project.images[0]}
                     alt={content.title}
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"
