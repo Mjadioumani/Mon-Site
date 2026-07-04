@@ -1,7 +1,13 @@
 
+import type { Metadata } from 'next';
 import { Sidebar } from '@/components/Sidebar';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { Toaster } from '@/components/ui/toaster';
+
+export const metadata: Metadata = {
+  title: 'Projects | Adioumani Jean',
+  description: 'A selection of network engineering and web development projects by Adioumani Jean.',
+};
 
 export default function ProjectsPage() {
   return (

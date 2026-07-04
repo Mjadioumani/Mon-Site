@@ -2,7 +2,30 @@
   "permissions": {
     "allow": [
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(npm install *)",
+      "Bash(npm uninstall *)",
+      "Bash(npm run *)",
+      "Bash(Select-String -Pattern \"\")",
+      "Bash(Select-Object -Skip 49 -First 15)",
+      "Bash(npx next *)",
+      "Bash(rm -rf .next)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(timeout 40 bash -c 'until curl -sf http://localhost:9002 >/dev/null; do sleep 1; done')",
+      "Read(//tmp/**)",
+      "Bash(curl -sv http://localhost:9002)",
+      "Bash(netstat -ano)",
+      "Bash(powershell -NoProfile -Command \"Get-Process -Id 15228 | Select-Object Id, ProcessName, Path, StartTime\")",
+      "Bash(npx --yes chromium-cli --help)",
+      "Bash(npm ls *)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx --yes playwright install chromium --with-deps)",
+      "Bash(node \"C:\\\\Users\\\\OPEN\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-OPEN-Downloads-mon-portfolio\\\\1ff42cd7-5fcb-43b0-b131-c2332041f358\\\\scratchpad\\\\verify.mjs\")",
+      "Bash(cp \"C:\\\\Users\\\\OPEN\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-OPEN-Downloads-mon-portfolio\\\\1ff42cd7-5fcb-43b0-b131-c2332041f358\\\\scratchpad\\\\verify.mjs\" \"c:\\\\Users\\\\OPEN\\\\Downloads\\\\mon portfolio\\\\_verify.mjs\")",
+      "Bash(node _verify.mjs)",
+      "Bash(node _verify_home.mjs)"
     ]
   }
 }

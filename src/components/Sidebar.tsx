@@ -2,41 +2,35 @@
 
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Home, User, Briefcase, Star, Mail, FileText, Linkedin, Github, Instagram, Circle, Menu, Globe } from 'lucide-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Home, User, Briefcase, Star, Mail, Linkedin, Github, Instagram, Circle, Menu, Globe } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageContext';
-
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-  </svg>
-);
+import { TikTokIcon } from '@/components/icons/TikTokIcon';
 
 const SOCIAL_LINKS = [
-  { icon: Linkedin, href: '#' },
-  { icon: Github, href: '#' },
-  { icon: Instagram, href: '#' },
-  { icon: TikTokIcon, href: '#' },
+  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Github, href: '#', label: 'GitHub' },
+  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: TikTokIcon, href: '#', label: 'TikTok' },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
-  const profileImage = PlaceHolderImages.find(img => img.id === 'profile-patricia');
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 8);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const NAV_ITEMS = [
     { label: t.nav.home, icon: Home, href: '/' },
@@ -44,7 +38,6 @@ export function Sidebar() {
     { label: t.nav.projects, icon: Briefcase, href: '/projects' },
     { label: t.nav.stack, icon: Star, href: '/stack' },
     { label: t.nav.contact, icon: Mail, href: '/contact' },
-    { label: t.nav.licensing, icon: FileText, href: '/licensing' },
   ];
 
   const SidebarContent = () => (
@@ -58,13 +51,14 @@ export function Sidebar() {
               alt="Portrait of Adioumani Jean, Network & Web Developer"
               fill
               priority
+              sizes="144px"
               className="object-cover grayscale contrast-[1.1]"
               data-ai-hint="professional portrait of Adioumani Jean, Network & Web Developer, in a modern and minimalist style, with a focus on clarity and professionalism"
             />
           </div>
-          <Button 
-            variant="ghost" 
-            size="sm" 
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')}
             className="text-[10px] font-bold tracking-widest text-muted-foreground hover:text-white h-8 border border-white/5 rounded-full px-3 gap-2"
           >
@@ -83,18 +77,26 @@ export function Sidebar() {
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
               return (
-                <li key={item.label}>
+                <li key={item.label} className="relative">
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-2.5 transition-all rounded-lg group ${
-                      isActive 
-                      ? 'bg-[#1a1a1a] text-white' 
-                      : 'text-muted-foreground hover:text-white hover:bg-sidebar-accent'
+                    data-cursor-hover
+                    className={`relative flex items-center gap-3 px-4 py-2.5 transition-colors rounded-lg group ${
+                      isActive
+                      ? 'text-white'
+                      : 'text-muted-foreground hover:text-white'
                     }`}
                   >
-                    <item.icon className={`w-4 h-4 ${isActive ? 'opacity-100' : 'opacity-50 group-hover:opacity-100'}`} />
-                    <span className="text-[13px] font-medium">{item.label}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="sidebar-active-pill"
+                        className="absolute inset-0 bg-[#1a1a1a] rounded-lg"
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <item.icon className={`relative w-4 h-4 ${isActive ? 'opacity-100' : 'opacity-50 group-hover:opacity-100'}`} />
+                    <span className="relative text-[13px] font-medium">{item.label}</span>
                   </Link>
                 </li>
               );
@@ -109,6 +111,8 @@ export function Sidebar() {
             <a
               key={idx}
               href={link.href}
+              aria-label={link.label}
+              data-cursor-hover
               className="text-muted-foreground hover:text-white transition-colors"
             >
               <link.icon className="w-4 h-4" />
@@ -121,13 +125,17 @@ export function Sidebar() {
 
   return (
     <>
-      <header className="md:hidden fixed top-0 left-0 right-0 h-16 bg-sidebar/80 backdrop-blur-md border-b border-sidebar-border z-40 px-6 flex items-center justify-between">
+      <header className={`md:hidden fixed top-0 left-0 right-0 h-16 border-b border-sidebar-border z-40 px-6 flex items-center justify-between transition-colors duration-300 ${
+        scrolled ? 'bg-sidebar/95 backdrop-blur-lg shadow-lg shadow-black/20' : 'bg-sidebar/70 backdrop-blur-md'
+      }`}>
         <div className="flex items-center gap-3">
           <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-muted border border-border/50 pointer-events-none">
             <Image
               src="/image/profile.png"
               alt="Profile"
               fill
+              priority
+              sizes="40px"
               className="object-cover grayscale"
             />
           </div>
@@ -135,11 +143,11 @@ export function Sidebar() {
             {language === 'en' ? 'Available' : 'Disponible'}
           </Badge>
         </div>
-        
+
         <div className="flex items-center gap-2">
-          <Button 
-            variant="ghost" 
-            size="sm" 
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')}
             className="text-[9px] font-bold tracking-widest text-muted-foreground hover:text-white h-7 border border-white/5 rounded-full px-2 gap-1"
           >

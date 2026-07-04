@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import { Sidebar } from '@/components/Sidebar';
 import { ContactPageContent } from '@/components/ContactPageContent';
 import { Toaster } from '@/components/ui/toaster';
+
+export const metadata: Metadata = {
+  title: 'Contact | Adioumani Jean',
+  description: 'Get in touch with Adioumani Jean for web development, network engineering or design projects.',
+};
 
 export default function ContactPage() {
   return (

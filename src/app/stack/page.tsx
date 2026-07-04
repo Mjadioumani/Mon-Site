@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import { Sidebar } from '@/components/Sidebar';
 import { StackList } from '@/components/StackList';
 import { Toaster } from '@/components/ui/toaster';
+
+export const metadata: Metadata = {
+  title: 'Tech Stack | Adioumani Jean',
+  description: 'The tools and technologies Adioumani Jean uses across web development, networking and design.',
+};
 
 export default function StackPage() {
   return (

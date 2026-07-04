@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import { Sidebar } from '@/components/Sidebar';
 import { About } from '@/components/About';
 import { Toaster } from '@/components/ui/toaster';
+
+export const metadata: Metadata = {
+  title: 'About | Adioumani Jean',
+  description: "Education, certifications and experience of Adioumani Jean, a Network Engineering student and multidisciplinary developer based in Abidjan, Côte d'Ivoire.",
+};
 
 export default function AboutPage() {
   return (
