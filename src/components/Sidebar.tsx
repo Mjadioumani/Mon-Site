@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Home, User, Briefcase, Star, Mail, Linkedin, Github, Instagram, Circle, Menu, Globe } from 'lucide-react';
+import { Home, User, Briefcase, Star, Mail, Linkedin, Github, Circle, Menu, Globe } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -10,13 +10,10 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageContext';
-import { TikTokIcon } from '@/components/icons/TikTokIcon';
 
 const SOCIAL_LINKS = [
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: TikTokIcon, href: '#', label: 'TikTok' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/adioumani-jean-martinien-fabrice', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/Mjadioumani', label: 'GitHub' },
 ];
 
 export function Sidebar() {
@@ -48,12 +45,12 @@ export function Sidebar() {
           <div className="relative w-36 h-36 rounded-2xl overflow-hidden bg-muted border border-white/10 shadow-2xl ring-1 ring-white/5 pointer-events-none">
             <Image
               src="/image/profile.png"
-              alt="Portrait of Adioumani Jean, Network & Web Developer"
+              alt="Portrait of Adioumani Jean, Network & DevSecOps Engineer"
               fill
               priority
               sizes="144px"
               className="object-cover grayscale contrast-[1.1]"
-              data-ai-hint="professional portrait of Adioumani Jean, Network & Web Developer, in a modern and minimalist style, with a focus on clarity and professionalism"
+              data-ai-hint="professional portrait of Adioumani Jean, Network & DevSecOps Engineer transitioning into backend and data engineering, in a modern and minimalist style, with a focus on clarity and professionalism"
             />
           </div>
           <Button
@@ -111,6 +108,8 @@ export function Sidebar() {
             <a
               key={idx}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={link.label}
               data-cursor-hover
               className="text-muted-foreground hover:text-white transition-colors"
@@ -129,14 +128,14 @@ export function Sidebar() {
         scrolled ? 'bg-sidebar/95 backdrop-blur-lg shadow-lg shadow-black/20' : 'bg-sidebar/70 backdrop-blur-md'
       }`}>
         <div className="flex items-center gap-3">
-          <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-muted border border-border/50 pointer-events-none">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden bg-muted border border-primary/40 pointer-events-none shrink-0">
             <Image
               src="/image/profile.png"
               alt="Profile"
               fill
               priority
-              sizes="40px"
-              className="object-cover grayscale"
+              sizes="48px"
+              className="object-cover"
             />
           </div>
           <Badge variant="default" className="bg-[#0f2d1f] text-primary border-none py-0.5 px-2 rounded-full text-[8px] font-bold uppercase">

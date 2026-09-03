@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <marker id="sg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22c55e"/>
+    </marker>
+    <linearGradient id="sg-glow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#22c55e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#050505"/>
+  <rect x="0" y="0" width="1600" height="1" fill="#1f1f1f"/>
+
+  <text x="64" y="80" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#ffffff">SmartNet Guard — System Architecture</text>
+  <text x="64" y="112" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="15" fill="#5a5a5a">Centralized network supervision · Ubuntu Server + Zabbix + Python ETL + React</text>
+  <line x1="64" y1="140" x2="1536" y2="140" stroke="#1f1f1f"/>
+
+  <!-- Stage 1: Ubuntu hosts -->
+  <g>
+    <rect x="64" y="380" width="230" height="240" rx="14" fill="#0b0b0c" stroke="#1f1f1f"/>
+    <text x="179" y="360" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">MONITORED HOSTS</text>
+    <g font-family="ui-monospace,monospace" font-size="13" fill="#c9c9c9">
+      <rect x="90" y="410" width="178" height="42" rx="8" fill="#141414"/>
+      <circle cx="110" cy="431" r="4" fill="#22c55e"/>
+      <text x="124" y="436">ubuntu-node-01</text>
+
+      <rect x="90" y="462" width="178" height="42" rx="8" fill="#141414"/>
+      <circle cx="110" cy="483" r="4" fill="#22c55e"/>
+      <text x="124" y="488">ubuntu-node-02</text>
+
+      <rect x="90" y="514" width="178" height="42" rx="8" fill="#141414"/>
+      <circle cx="110" cy="535" r="4" fill="#22c55e"/>
+      <text x="124" y="540">ubuntu-node-03</text>
+
+      <rect x="90" y="566" width="178" height="42" rx="8" fill="#141414"/>
+      <circle cx="110" cy="587" r="4" fill="#eab308"/>
+      <text x="124" y="592">+125 more hosts</text>
+    </g>
+  </g>
+
+  <line x1="294" y1="500" x2="404" y2="500" stroke="url(#sg-glow)" stroke-width="3" marker-end="url(#sg-arrow)"/>
+
+  <!-- Stage 2: Zabbix -->
+  <g>
+    <rect x="404" y="410" width="220" height="180" rx="14" fill="#0b0b0c" stroke="#22c55e" stroke-opacity="0.4"/>
+    <text x="514" y="392" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">ZABBIX SERVER</text>
+    <text x="514" y="460" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#22c55e">Zabbix</text>
+    <text x="514" y="486" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">Real-time metric &amp; event</text>
+    <text x="514" y="504" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">collection engine</text>
+    <rect x="434" y="528" width="160" height="30" rx="6" fill="#0f2d1f"/>
+    <text x="514" y="548" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#22c55e">triggers · alerts</text>
+  </g>
+
+  <line x1="624" y1="500" x2="734" y2="500" stroke="url(#sg-glow)" stroke-width="3" marker-end="url(#sg-arrow)"/>
+
+  <!-- Stage 3: Python ETL -->
+  <g>
+    <rect x="734" y="400" width="230" height="200" rx="14" fill="#0b0b0c" stroke="#1f1f1f"/>
+    <text x="849" y="382" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">PYTHON ETL PIPELINE</text>
+    <rect x="760" y="416" width="178" height="34" rx="6" fill="#141414"/>
+    <text x="849" y="438" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#c9c9c9">extract_logs()</text>
+    <rect x="760" y="460" width="178" height="34" rx="6" fill="#141414"/>
+    <text x="849" y="482" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#c9c9c9">normalize_events()</text>
+    <rect x="760" y="504" width="178" height="34" rx="6" fill="#141414"/>
+    <text x="849" y="526" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#c9c9c9">classify_severity()</text>
+    <rect x="760" y="548" width="178" height="34" rx="6" fill="#0f2d1f"/>
+    <text x="849" y="570" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#22c55e">load_to_db()</text>
+  </g>
+
+  <line x1="964" y1="500" x2="1074" y2="500" stroke="url(#sg-glow)" stroke-width="3" marker-end="url(#sg-arrow)"/>
+
+  <!-- Stage 4: PostgreSQL -->
+  <g>
+    <rect x="1074" y="420" width="180" height="160" rx="14" fill="#0b0b0c" stroke="#1f1f1f"/>
+    <text x="1164" y="402" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">POSTGRESQL</text>
+    <ellipse cx="1164" cy="465" rx="52" ry="16" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+    <path d="M1112,465 v40 a52,16 0 0 0 104,0 v-40" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+    <line x1="1112" y1="485" x2="1216" y2="485" stroke="#4169E1" stroke-width="1" opacity="0.5"/>
+    <text x="1164" y="548" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">hosts · alerts · logs</text>
+  </g>
+
+  <line x1="1254" y1="500" x2="1364" y2="500" stroke="url(#sg-glow)" stroke-width="3" marker-end="url(#sg-arrow)"/>
+
+  <!-- Stage 5: React dashboard -->
+  <g>
+    <rect x="1364" y="400" width="172" height="200" rx="14" fill="#0b0b0c" stroke="#22c55e" stroke-opacity="0.4"/>
+    <text x="1450" y="382" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">REACT UI</text>
+    <rect x="1384" y="420" width="132" height="16" rx="4" fill="#141414"/>
+    <rect x="1384" y="446" width="132" height="60" rx="8" fill="#141414"/>
+    <circle cx="1404" cy="476" r="6" fill="#ef4444"/>
+    <text x="1418" y="480" font-family="Arial" font-size="10" fill="#c9c9c9">3 alerts</text>
+    <rect x="1384" y="516" width="132" height="60" rx="8" fill="#141414"/>
+    <circle cx="1404" cy="546" r="6" fill="#22c55e"/>
+    <text x="1418" y="550" font-family="Arial" font-size="10" fill="#c9c9c9">128 hosts up</text>
+  </g>
+
+  <!-- Legend / caption -->
+  <line x1="64" y1="720" x2="1536" y2="720" stroke="#1f1f1f"/>
+  <text x="64" y="770" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#9ca3af">Data flows left to right: hosts are polled by Zabbix agents; Zabbix hands raw events to a Python ETL layer</text>
+  <text x="64" y="796" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#9ca3af">that normalizes and classifies them into PostgreSQL, which the React dashboard queries in real time.</text>
+
+  <g font-family="Arial" font-size="12" fill="#5a5a5a">
+    <circle cx="70" cy="850" r="5" fill="#22c55e"/>
+    <text x="84" y="855">Secure channel</text>
+    <circle cx="220" cy="850" r="5" fill="#eab308"/>
+    <text x="234" y="855">Warning state</text>
+    <circle cx="370" cy="850" r="5" fill="#ef4444"/>
+    <text x="384" y="855">Critical alert</text>
+  </g>
+</svg>

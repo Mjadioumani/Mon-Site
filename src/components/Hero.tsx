@@ -56,8 +56,10 @@ export function Hero() {
 
   const words = t.hero.greeting.split(' ');
 
+  const certificationCount = t.about.certificationGroups.reduce((total, group) => total + group.credentials.length, 0);
+
   const stats = [
-    { value: t.about.certificationList.length, label: t.about.certificationTitle },
+    { value: certificationCount, label: t.about.certificationTitle },
     { value: t.about.languagesList.length, label: t.about.languagesTitle },
     { value: t.about.interestsList.length, label: t.about.interestsTitle },
   ];

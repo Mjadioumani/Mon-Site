@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/LanguageContext';
 import { Reveal } from '@/components/motion/Reveal';
 import { Timeline } from '@/components/Timeline';
+import { CertificationsGrid } from '@/components/CertificationsGrid';
+import { VideoIntro } from '@/components/VideoIntro';
 import { Footer } from '@/components/Footer';
 
 export function About() {
@@ -17,13 +19,6 @@ export function About() {
     subtitle: `${edu.institution}, ${edu.year}`,
   }));
 
-  const certificationEntries = t.about.certificationList.map((cert) => ({
-    icon: GraduationCap,
-    title: cert.name,
-    subtitle: `${cert.institution}, ${cert.year}`,
-    href: cert.link,
-  }));
-
   const experienceEntries = t.about.experienceList.map((exp) => ({
     icon: Briefcase,
     title: exp.role,
@@ -33,10 +28,15 @@ export function About() {
   return (
     <section className="py-12 md:py-20 space-y-16">
       {/* Intro text */}
-      <Reveal variant="up" className="max-w-2xl">
-        <p className="text-[13px] md:text-[14px] text-muted-foreground leading-relaxed">
-          {t.about.intro}
+      <Reveal variant="up" className="max-w-2xl space-y-4">
+        <p className="text-[15px] md:text-[16px] font-bold text-white leading-relaxed">
+          {t.about.intro.tagline}
         </p>
+        {t.about.intro.paragraphs.map((paragraph, idx) => (
+          <p key={idx} className="text-[13px] md:text-[14px] text-muted-foreground leading-relaxed">
+            {paragraph}
+          </p>
+        ))}
       </Reveal>
 
       {/* Get to Know Me */}
@@ -48,6 +48,9 @@ export function About() {
         </div>
       </Reveal>
 
+      {/* Video Introduction — hidden until PRESENTATION_VIDEO_URL is set in lib/site.ts */}
+      <VideoIntro />
+
       {/* Education */}
       <Reveal variant="up" className="space-y-10">
         <h3 className="text-xl font-bold text-white">{t.about.education}</h3>
@@ -57,7 +60,7 @@ export function About() {
       {/* Certifications */}
       <Reveal variant="up" className="space-y-8">
         <h3 className="text-xl font-bold text-white">{t.about.certificationTitle}</h3>
-        <Timeline entries={certificationEntries} />
+        <CertificationsGrid />
       </Reveal>
 
       {/* Stack Section */}

@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Tech Stack | Adioumani Jean',
-  description: 'The tools and technologies Adioumani Jean uses across web development, networking and design.',
+  description: 'The tools and technologies Adioumani Jean uses across backend development, data engineering, network supervision and applied AI.',
 };
 
 export default function StackPage() {

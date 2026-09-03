@@ -10,13 +10,13 @@ import { SITE_URL } from '@/lib/site';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Adioumani Jean | Network Engineering & Web Development',
+    default: 'Adioumani Jean | Network & DevSecOps Engineer — Backend, Data & Applied AI',
     template: '%s',
   },
-  description: 'A modern portfolio showcasing digital excellence and creative design across web development, network engineering and UI/UX design.',
+  description: 'Portfolio of Adioumani Jean, a Network & DevSecOps Engineer at AROPARTNERS transitioning into Backend Development, Data Engineering and Applied AI. CAMES-accredited Bachelor\'s in Networks & Telecommunications, Highest Honors.',
   openGraph: {
-    title: 'Adioumani Jean | Network Engineering & Web Development',
-    description: 'A modern portfolio showcasing digital excellence and creative design across web development, network engineering and UI/UX design.',
+    title: 'Adioumani Jean | Network & DevSecOps Engineer — Backend, Data & Applied AI',
+    description: 'Portfolio of Adioumani Jean, a Network & DevSecOps Engineer at AROPARTNERS transitioning into Backend Development, Data Engineering and Applied AI. CAMES-accredited Bachelor\'s in Networks & Telecommunications, Highest Honors.',
     url: SITE_URL,
     siteName: 'Adioumani Jean',
     images: ['/image/profile.png'],
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Adioumani Jean | Network Engineering & Web Development',
-    description: 'A modern portfolio showcasing digital excellence and creative design across web development, network engineering and UI/UX design.',
+    title: 'Adioumani Jean | Network & DevSecOps Engineer — Backend, Data & Applied AI',
+    description: 'Portfolio of Adioumani Jean, a Network & DevSecOps Engineer at AROPARTNERS transitioning into Backend Development, Data Engineering and Applied AI.',
     images: ['/image/profile.png'],
   },
 };
@@ -34,9 +34,21 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Adioumani Jean',
-  jobTitle: ['Web Designer', 'Full Stack Developer', 'Network Engineer', 'UI/UX Designer'],
+  jobTitle: ['Front-End Developer', 'Networks & DevSecOps Specialist', 'Backend Developer', 'Data Engineer'],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'AROPARTNERS',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Institut CERCO, Abidjan',
+  },
   url: SITE_URL,
   image: `${SITE_URL}/image/profile.png`,
+  sameAs: [
+    'https://www.linkedin.com/in/adioumani-jean-martinien-fabrice',
+    'https://github.com/Mjadioumani',
+  ],
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Abidjan',
