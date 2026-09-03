@@ -24,10 +24,15 @@ interface RevealProps {
   duration?: number;
   className?: string;
   once?: boolean;
-  amount?: number;
+  amount?: number | 'some' | 'all';
 }
 
-/** Scroll-triggered reveal for a single element. No-ops under prefers-reduced-motion. */
+/**
+ * Scroll-triggered reveal for a single element. No-ops under prefers-reduced-motion.
+ * Defaults `amount` to 'some' (any pixel visible) rather than a fraction — a fraction
+ * like 0.3 can never be satisfied for content taller than the viewport (e.g. a long
+ * mobile-stacked list), which leaves the element stuck invisible forever.
+ */
 export function Reveal({
   children,
   variant = 'up',
@@ -35,7 +40,7 @@ export function Reveal({
   duration = 0.7,
   className,
   once = true,
-  amount = 0.3,
+  amount = 'some',
 }: RevealProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -62,11 +67,11 @@ interface RevealGroupProps {
   className?: string;
   stagger?: number;
   once?: boolean;
-  amount?: number;
+  amount?: number | 'some' | 'all';
 }
 
-/** Wrap RevealItem children to stagger their entrance as a group scrolls into view. */
-export function RevealGroup({ children, className, stagger = 0.1, once = true, amount = 0.2 }: RevealGroupProps) {
+/** Wrap RevealItem children to stagger their entrance as a group scrolls into view. Same 'some' rationale as Reveal. */
+export function RevealGroup({ children, className, stagger = 0.1, once = true, amount = 'some' }: RevealGroupProps) {
   const shouldReduceMotion = useReducedMotion();
 
   if (shouldReduceMotion) {
