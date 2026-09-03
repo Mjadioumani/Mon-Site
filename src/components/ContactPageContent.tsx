@@ -4,13 +4,12 @@ import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Loader2, Mail, Phone, Linkedin, Github, Instagram } from 'lucide-react';
+import { Loader2, Mail, Phone, Linkedin, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/components/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
-import { TikTokIcon } from '@/components/icons/TikTokIcon';
 import { Reveal } from '@/components/motion/Reveal';
 import { Footer } from '@/components/Footer';
 
@@ -144,21 +143,13 @@ export function ContactPageContent() {
           <div className="space-y-8">
             <h3 className="text-lg font-bold text-white tracking-wide">{t.contact.socialTitle}</h3>
             <div className="space-y-6">
-              <a href="#" data-cursor-hover className="flex items-center gap-4 text-muted-foreground hover:text-white transition-colors group">
+              <a href="https://www.linkedin.com/in/adioumani-jean-martinien-fabrice" target="_blank" rel="noopener noreferrer" data-cursor-hover className="flex items-center gap-4 text-muted-foreground hover:text-white transition-colors group">
                 <Linkedin className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 <span className="text-[13px] font-medium tracking-wide">LinkedIn</span>
               </a>
-              <a href="#" data-cursor-hover className="flex items-center gap-4 text-muted-foreground hover:text-white transition-colors group">
+              <a href="https://github.com/Mjadioumani" target="_blank" rel="noopener noreferrer" data-cursor-hover className="flex items-center gap-4 text-muted-foreground hover:text-white transition-colors group">
                 <Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 <span className="text-[13px] font-medium tracking-wide">GitHub</span>
-              </a>
-              <a href="#" data-cursor-hover className="flex items-center gap-4 text-muted-foreground hover:text-white transition-colors group">
-                <Instagram className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                <span className="text-[13px] font-medium tracking-wide">Instagram</span>
-              </a>
-              <a href="#" data-cursor-hover className="flex items-center gap-4 text-muted-foreground hover:text-white transition-colors group">
-                <TikTokIcon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                <span className="text-[13px] font-medium tracking-wide">TikTok</span>
               </a>
             </div>
           </div>

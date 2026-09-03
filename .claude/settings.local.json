@@ -27,7 +27,11 @@
       "Bash(node _verify.mjs)",
       "Bash(node _verify_home.mjs)",
       "Bash(git check-ignore *)",
-      "Bash(git commit -q -m ' *)"
+      "Bash(git commit -q -m ' *)",
+      "Bash(mkdir -p \"c:/Users/Stagiaire2/Mon-Site/public/projects\" && echo done)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Stagiaire2\\Mon-Site\\public"
     ]
   }
 }

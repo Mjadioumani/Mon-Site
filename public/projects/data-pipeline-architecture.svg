@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <marker id="dp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22c55e"/>
+    </marker>
+    <linearGradient id="dp-glow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#22c55e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#050505"/>
+  <rect x="0" y="0" width="1600" height="1" fill="#1f1f1f"/>
+
+  <text x="64" y="80" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#ffffff">Enterprise Data Pipeline — ETL &amp; KPI Flow</text>
+  <text x="64" y="112" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="15" fill="#5a5a5a">Excel ingestion · Python ETL · PostgreSQL · Django · Carbonio CE</text>
+  <line x1="64" y1="140" x2="1536" y2="140" stroke="#1f1f1f"/>
+
+  <!-- Excel sources -->
+  <g>
+    <rect x="64" y="420" width="200" height="160" rx="14" fill="#0b0b0c" stroke="#1f1f1f"/>
+    <text x="164" y="402" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">RAW EXCEL FILES</text>
+    <rect x="88" y="440" width="152" height="30" rx="6" fill="#141414"/>
+    <text x="164" y="460" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#22a559">sales_q3.xlsx</text>
+    <rect x="88" y="478" width="152" height="30" rx="6" fill="#141414"/>
+    <text x="164" y="498" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#22a559">ops_kpi_w36.xlsx</text>
+    <rect x="88" y="516" width="152" height="30" rx="6" fill="#141414"/>
+    <text x="164" y="536" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#22a559">hr_headcount.xlsx</text>
+  </g>
+
+  <line x1="264" y1="500" x2="374" y2="500" stroke="url(#dp-glow)" stroke-width="3" marker-end="url(#dp-arrow)"/>
+
+  <!-- ETL stages -->
+  <g>
+    <rect x="374" y="360" width="620" height="280" rx="16" fill="#0b0b0c" stroke="#22c55e" stroke-opacity="0.35"/>
+    <text x="684" y="392" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="2">PYTHON ETL PIPELINE</text>
+
+    <rect x="404" y="420" width="170" height="180" rx="12" fill="#141414"/>
+    <text x="489" y="450" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#22c55e">EXTRACT</text>
+    <text x="489" y="480" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#9ca3af">read_excel()</text>
+    <text x="489" y="500" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#9ca3af">detect_schema()</text>
+    <text x="489" y="520" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#9ca3af">flag_missing()</text>
+
+    <line x1="574" y1="510" x2="614" y2="510" stroke="#2a2a2a" stroke-width="2" marker-end="url(#dp-arrow)"/>
+
+    <rect x="614" y="420" width="170" height="180" rx="12" fill="#141414"/>
+    <text x="699" y="450" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#22c55e">TRANSFORM</text>
+    <text x="699" y="480" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#9ca3af">normalize_cols()</text>
+    <text x="699" y="500" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#9ca3af">validate_rows()</text>
+    <text x="699" y="520" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#9ca3af">compute_kpis()</text>
+
+    <line x1="784" y1="510" x2="824" y2="510" stroke="#2a2a2a" stroke-width="2" marker-end="url(#dp-arrow)"/>
+
+    <rect x="824" y="420" width="140" height="180" rx="12" fill="#0f2d1f"/>
+    <text x="894" y="450" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#22c55e">LOAD</text>
+    <text x="894" y="480" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#c9f7d8">upsert_rows()</text>
+    <text x="894" y="500" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#c9f7d8">log_run()</text>
+  </g>
+
+  <line x1="994" y1="500" x2="1084" y2="500" stroke="url(#dp-glow)" stroke-width="3" marker-end="url(#dp-arrow)"/>
+
+  <!-- PostgreSQL -->
+  <g>
+    <rect x="1084" y="420" width="170" height="160" rx="14" fill="#0b0b0c" stroke="#1f1f1f"/>
+    <text x="1169" y="402" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">POSTGRESQL</text>
+    <ellipse cx="1169" cy="465" rx="48" ry="15" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+    <path d="M1121,465 v40 a48,15 0 0 0 96,0 v-40" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+    <line x1="1121" y1="485" x2="1217" y2="485" stroke="#4169E1" stroke-width="1" opacity="0.5"/>
+    <text x="1169" y="548" text-anchor="middle" font-family="Arial" font-size="11" fill="#9ca3af">kpi · teams · periods</text>
+  </g>
+
+  <line x1="1254" y1="470" x2="1330" y2="440" stroke="url(#dp-glow)" stroke-width="3" marker-end="url(#dp-arrow)"/>
+  <line x1="1254" y1="530" x2="1330" y2="560" stroke="url(#dp-glow)" stroke-width="3" marker-end="url(#dp-arrow)"/>
+
+  <!-- Django -->
+  <g>
+    <rect x="1330" y="390" width="200" height="90" rx="12" fill="#0b0b0c" stroke="#0C4B33"/>
+    <text x="1430" y="425" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#22c55e">Django API</text>
+    <text x="1430" y="450" text-anchor="middle" font-family="Arial" font-size="11" fill="#9ca3af">KPI reporting endpoints</text>
+  </g>
+
+  <!-- Carbonio -->
+  <g>
+    <rect x="1330" y="520" width="200" height="90" rx="12" fill="#0b0b0c" stroke="#1f1f1f"/>
+    <text x="1430" y="555" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#ffffff">Carbonio CE</text>
+    <text x="1430" y="580" text-anchor="middle" font-family="Arial" font-size="11" fill="#9ca3af">Collaborative platform</text>
+  </g>
+
+  <line x1="64" y1="720" x2="1536" y2="720" stroke="#1f1f1f"/>
+  <text x="64" y="770" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#9ca3af">Raw Excel exports are extracted, validated and transformed into a normalized schema, then loaded into</text>
+  <text x="64" y="796" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#9ca3af">PostgreSQL. Django exposes KPI endpoints alongside the Carbonio CE collaborative platform.</text>
+</svg>

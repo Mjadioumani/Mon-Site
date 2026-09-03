@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <marker id="sq-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#050505"/>
+  <text x="64" y="80" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#ffffff">Smart Queue Management — Data &amp; LLM Flow</text>
+  <text x="64" y="112" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="15" fill="#5a5a5a">React · Django REST · PostgreSQL · Claude API (grounded natural-language queries)</text>
+  <line x1="64" y1="140" x2="1536" y2="140" stroke="#1f1f1f"/>
+
+  <!-- React frontend -->
+  <g>
+    <rect x="90" y="380" width="260" height="220" rx="16" fill="#0b0b0c" stroke="#61DAFB" stroke-opacity="0.4"/>
+    <text x="220" y="360" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">REACT FRONTEND</text>
+    <text x="220" y="440" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#61DAFB">Visitor View</text>
+    <text x="220" y="464" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">ticket · position · wait time</text>
+    <line x1="130" y1="486" x2="310" y2="486" stroke="#1f1f1f"/>
+    <text x="220" y="520" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#61DAFB">Staff View</text>
+    <text x="220" y="544" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">counters · AI assistant chat</text>
+  </g>
+
+  <line x1="350" y1="450" x2="470" y2="450" stroke="#22c55e" stroke-width="3" marker-end="url(#sq-arrow)"/>
+  <line x1="470" y1="500" x2="350" y2="500" stroke="#2a2a2a" stroke-width="2" marker-end="url(#sq-arrow)"/>
+  <text x="410" y="440" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="#5a5a5a">REST</text>
+  <text x="410" y="522" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="#5a5a5a">JSON</text>
+
+  <!-- Django backend -->
+  <g>
+    <rect x="470" y="360" width="280" height="260" rx="16" fill="#0b0b0c" stroke="#0C4B33"/>
+    <text x="610" y="340" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">DJANGO REST API</text>
+    <rect x="494" y="392" width="232" height="36" rx="8" fill="#141414"/>
+    <text x="610" y="415" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#c9c9c9">/api/queues/</text>
+    <rect x="494" y="438" width="232" height="36" rx="8" fill="#141414"/>
+    <text x="610" y="461" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#c9c9c9">/api/counters/</text>
+    <rect x="494" y="484" width="232" height="36" rx="8" fill="#141414"/>
+    <text x="610" y="507" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#c9c9c9">/api/tickets/</text>
+    <rect x="494" y="530" width="232" height="36" rx="8" fill="#0f2d1f"/>
+    <text x="610" y="553" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#22c55e">/api/ask/ (LLM)</text>
+  </g>
+
+  <line x1="750" y1="450" x2="870" y2="410" stroke="#4169E1" stroke-width="3" marker-end="url(#sq-arrow)"/>
+  <line x1="870" y1="460" x2="750" y2="500" stroke="#2a2a2a" stroke-width="2" marker-end="url(#sq-arrow)"/>
+
+  <!-- PostgreSQL -->
+  <g>
+    <rect x="870" y="360" width="200" height="180" rx="16" fill="#0b0b0c" stroke="#1f1f1f"/>
+    <text x="970" y="340" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#9ca3af" letter-spacing="1">POSTGRESQL</text>
+    <ellipse cx="970" cy="410" rx="54" ry="16" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+    <path d="M916,410 v60 a54,16 0 0 0 108,0 v-60" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+    <line x1="916" y1="440" x2="1024" y2="440" stroke="#4169E1" stroke-width="1" opacity="0.5"/>
+    <text x="970" y="510" text-anchor="middle" font-family="Arial" font-size="11" fill="#9ca3af">queues · tickets · counters</text>
+  </g>
+
+  <line x1="726" y1="566" x2="726" y2="670" stroke="#D97757" stroke-width="3" marker-end="url(#sq-arrow)"/>
+  <text x="748" y="622" font-family="ui-monospace,monospace" font-size="11" fill="#D97757">grounded context</text>
+
+  <!-- Claude API -->
+  <g>
+    <rect x="546" y="670" width="360" height="200" rx="16" fill="#0b0b0c" stroke="#D97757" stroke-opacity="0.5"/>
+    <circle cx="596" cy="710" r="10" fill="#D97757"/>
+    <text x="616" y="716" font-family="Arial" font-size="16" font-weight="700" fill="#D97757">Claude API</text>
+    <text x="726" y="760" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">Receives scoped, structured data</text>
+    <text x="726" y="782" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">(per counter / time window) and</text>
+    <text x="726" y="804" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">answers staff questions in plain language —</text>
+    <text x="726" y="826" text-anchor="middle" font-family="Arial" font-size="12" fill="#9ca3af">never invents queue statistics.</text>
+  </g>
+
+  <line x1="64" y1="920" x2="1536" y2="920" stroke="#1f1f1f"/>
+  <text x="64" y="962" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#9ca3af">Staff questions are answered by the LLM only after the backend fetches live PostgreSQL data as structured context — keeping every answer grounded and current.</text>
+</svg>

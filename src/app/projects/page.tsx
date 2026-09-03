@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Projects | Adioumani Jean',
-  description: 'A selection of network engineering and web development projects by Adioumani Jean.',
+  description: 'Network supervision, data engineering and applied AI projects by Adioumani Jean, including SmartNet Guard, an enterprise KPI data pipeline and an LLM-powered queue management system.',
 };
 
 export default function ProjectsPage() {

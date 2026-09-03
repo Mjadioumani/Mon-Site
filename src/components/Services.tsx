@@ -1,10 +1,11 @@
 "use client";
 
-import { Palette, Code2, Layers, Network, ShieldCheck, Workflow, Cloud, Database, type LucideIcon } from 'lucide-react';
+import { Palette, Code2, Network, ShieldCheck, Workflow, Cloud, Database, Sparkles, type LucideIcon } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
 import { RevealGroup, RevealItem, Reveal } from '@/components/motion/Reveal';
 
-const ICONS: LucideIcon[] = [Palette, Code2, Layers, Network, ShieldCheck, Workflow, Cloud, Database];
+// Positional, matching services.items order: Frontend, Network, DevSecOps, AI-Backend, Data, AI/LLM, Cloud, Security.
+const ICONS: LucideIcon[] = [Palette, Network, Workflow, Code2, Database, Sparkles, Cloud, ShieldCheck];
 
 export function Services() {
   const { t } = useLanguage();
